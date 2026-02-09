@@ -1,12 +1,23 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'], 
+  standalone: true,
+  imports: [CommonModule, RouterOutlet]
 })
 export class AppComponent {
-  title = 'frontend';
+  constructor(private router: Router) {}
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }

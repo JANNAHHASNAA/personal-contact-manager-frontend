@@ -1,0 +1,41 @@
+<div class="page-wrapper">
+  <div class="card">
+
+    <h2 class="title">Register</h2>
+
+    <input
+      type="text"
+      [(ngModel)]="name"
+      name="name"
+      placeholder="Name"
+      class="input"
+    />
+
+    <input
+      type="email"
+      [(ngModel)]="email"
+      name="email"
+      placeholder="Email"
+      class="input"
+    />
+
+    <input
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      placeholder="Password"
+      class="input"
+    />
+
+    <button class="register-btn" (click)="register()">
+      Register
+    </button>
+
+    <p class="login-text">
+      <a routerLink="/login" class="login-link">
+        Already have an account? Login
+      </a>
+    </p>
+
+  </div>
+</div>
