@@ -13,7 +13,6 @@ import { AuthService } from './services/auth.services';
   imports: [CommonModule, RouterOutlet]
 })
 export class AppComponent {
-  // Use a getter to access the reactive login state
   get isLoggedIn$() {
     return this.authService.isLoggedIn$;
   }

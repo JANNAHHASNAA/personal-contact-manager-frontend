@@ -6,7 +6,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class AuthService {
   private baseUrl = 'http://localhost:3000/api/auth';
 
-  // Reactive login status
   private _isLoggedIn$ = new BehaviorSubject<boolean>(!!this.getToken());
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
@@ -22,12 +21,12 @@ export class AuthService {
 
   saveToken(token: string) {
     localStorage.setItem('token', token);
-    this._isLoggedIn$.next(true); // notify subscribers
+    this._isLoggedIn$.next(true);
   }
 
   logout() {
     localStorage.removeItem('token');
-    this._isLoggedIn$.next(false); // notify subscribers
+    this._isLoggedIn$.next(false);
   }
 
   getToken() {
