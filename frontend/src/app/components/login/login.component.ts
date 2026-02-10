@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.services';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'], 
+  styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [FormsModule, RouterModule]
+  imports: [FormsModule, RouterModule, CommonModule]
 })
 export class LoginComponent {
   email = '';
@@ -23,9 +23,12 @@ export class LoginComponent {
       .subscribe({
         next: (res: any) => {
           this.auth.saveToken(res.token);
+          
           this.router.navigate(['/contacts']);
         },
-        error: err => this.message = err.error.message || 'Error'
+        error: err => {
+          this.message = err.error?.message || 'Login failed';
+        }
       });
   }
 }

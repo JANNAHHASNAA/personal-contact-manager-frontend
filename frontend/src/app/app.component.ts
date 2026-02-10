@@ -1,23 +1,27 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { AuthService } from './services/auth.services';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'], 
+  styleUrls: ['./app.component.css'],
   standalone: true,
   imports: [CommonModule, RouterOutlet]
 })
 export class AppComponent {
-  constructor(private router: Router) {}
-
-  logout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+  // Use a getter to access the reactive login state
+  get isLoggedIn$() {
+    return this.authService.isLoggedIn$;
   }
 
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+  constructor(private authService: AuthService, private router: Router) {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
