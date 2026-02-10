@@ -1,0 +1,85 @@
+<h2 class="page-title">Contacts</h2>
+
+<div class="add-contact-card">
+
+  <input
+    type="text"
+    [(ngModel)]="name"
+    placeholder="Name"
+    class="contact-input"
+  />
+
+  <input
+    type="text"
+    [(ngModel)]="phone"
+    placeholder="Phone"
+    class="contact-input"
+  />
+
+  <input
+    type="email"
+    [(ngModel)]="email"
+    placeholder="Email"
+    class="contact-input"
+  />
+
+  <button class="btn btn-add" (click)="addContact()">
+    Add
+  </button>
+
+</div>
+
+<p class="success-message">{{ message }}</p>
+
+<div class="table-wrapper">
+  <table class="contacts-table">
+
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let c of contacts">
+
+        <td>
+  <span *ngIf="!c.edit">{{ c.name }}</span>
+  <input *ngIf="c.edit" [(ngModel)]="c.name" class="table-input" />
+</td>
+
+<td>
+  <span *ngIf="!c.edit">{{ c.phone }}</span>
+  <input *ngIf="c.edit" [(ngModel)]="c.phone" class="table-input" />
+</td>
+
+<td>
+  <span *ngIf="!c.edit">{{ c.email }}</span>
+  <input *ngIf="c.edit" [(ngModel)]="c.email" class="table-input" />
+</td>
+
+  <td class="action-cell">
+
+<button class="btn btn-delete" (click)="deleteContact(c.id)">
+  <i class="fas fa-trash"></i>
+</button>
+
+<button *ngIf="!c.edit" class="btn btn-edit" (click)="c.edit = true">
+  <i class="fas fa-edit"></i>
+</button>
+
+<button *ngIf="c.edit" class="btn btn-save" (click)="updateContact(c); c.edit = false">
+  <i class="fas fa-check"></i>
+</button>
+
+<button *ngIf="c.edit" class="btn btn-cancel" (click)="c.edit = false">
+  <i class="fas fa-times"></i>
+</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

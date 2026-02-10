@@ -1,0 +1,10 @@
+<h1>Personal Contact Manager</h1>
+<header>
+  <button *ngIf="isLoggedIn()" (click)="logout()" class="btn-logout">
+    Logout
+  </button>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
