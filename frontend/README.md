@@ -1,59 +1,39 @@
-# Frontend
+# Personal Contact Manager - Frontend (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+This is the frontend for the **Personal Contact Manager**, built with Angular. It works together with the backend REST API server to manage student contacts.
 
-## Development server
+---
 
-To start a local development server, run:
+## Overview
+- User-friendly interface for managing personal contacts
+- Register, login, add, edit, delete, and view contacts
+- Communicates with the backend API hosted at `http://localhost:3000` (see [Backend Repo](https://github.com/JANNAHHASNAA/personal-contact-manager-backend))
 
+---
+
+## Prerequisites
+- Node.js and npm installed: [https://nodejs.org](https://nodejs.org)  
+- Angular CLI installed globally:
 ```bash
+npm install -g @angular/cli
+Setup Instructions
+1. Clone the repository
+git clone https://github.com/JANNAHHASNAA/personal-contact-manager-frontend.git
+cd student-contact-app-frontend
+
+2. Install dependencies
+npm install
+
+3. Configure Backend API URL
+Open the Angular environment file:
+src/environments/environment.ts
+Set the apiUrl to point to your backend server:
+
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000'
+};
+Make sure your backend server from this repo is running first.
+
+4. Start the development server
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

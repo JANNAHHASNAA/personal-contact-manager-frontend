@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.services';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
-  private baseUrl = 'http://localhost:3000/api/contacts';
-
+  private baseUrl = `${environment.apiUrl}/api/contacts`; 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   private getHeaders() {
